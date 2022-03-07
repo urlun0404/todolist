@@ -47,13 +47,6 @@ add.addEventListener("click", (e) => {
   todo.appendChild(todoButton);
   todo.style.animation = "scaleUp 0.25s frowards";
 
-  // complete list-items
-  completeButton.addEventListener("click", (e) => {
-    todo.classList.toggle("done");
-    todo.setAttribute("done", todo.classList.contains("done"));
-    // reset load storage data
-  });
-
   // create an object
   let todoItem = {
     todoDay: todoDay,
@@ -71,6 +64,13 @@ add.addEventListener("click", (e) => {
     listAry.push(todoItem);
     localStorage.setItem("list", JSON.stringify(listAry));
   }
+
+  // complete list-items
+  completeButton.addEventListener("click", (e) => {
+    todo.classList.toggle("done");
+    todo.setAttribute("done", todo.classList.contains("done"));
+    console.log(todo);
+  });
 
   // remove list-items
   trashButton.addEventListener("click", (e) => {
@@ -144,6 +144,17 @@ function loadData() {
       completeButton.addEventListener("click", (e) => {
         todo.classList.toggle("done");
         todo.setAttribute("done", todo.classList.contains("done"));
+        let completeText =
+          e.target.parentElement.parentElement.querySelector(
+            ".todo-text"
+          ).innerText;
+        let listAry = JSON.parse(localStorage.getItem("list"));
+        listAry.forEach((item) => {
+          if (item.todoText == completeText) {
+            item.todoDone = todo.classList.contains("done");
+            localStorage.setItem("list", JSON.stringify(listAry));
+          }
+        });
       });
 
       // remove list-items
