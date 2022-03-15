@@ -1,5 +1,21 @@
 let section = document.querySelector("section");
 let add = document.querySelector("form button");
+
+// Set default date and time of inputs
+document.querySelector("form > input[type='date']").value = new Date()
+  .toLocaleString("zh-tw", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+  .replaceAll("/", "-");
+document.querySelector("form > input[type='time']").value =
+  new Date().toLocaleTimeString("en-GB", {
+    hour: "numeric",
+    minute: "numeric",
+  });
+
+// Create, complete, and remove todo tasks
 add.addEventListener("click", (e) => {
   // prevent form from being submtting
   e.preventDefault();
@@ -8,15 +24,15 @@ add.addEventListener("click", (e) => {
   // console.log(e.target.parentElement);
   let form = e.target.parentElement;
   let todoText = form[0].value;
-  let todoMonth = form[1].value;
-  let todoDay = form[2].value;
+  let todoDate = form[1].value;
+  let todoTime = form[2].value;
 
   if (todoText === "") {
-    alert("Please enter todo-matter");
+    alert("Please enter your task");
     return;
   }
-  if (todoMonth == "" || todoDay == "") {
-    alert("Please enter todo-time");
+  if (todoDate == "" || todoTime == "") {
+    alert("Please enter due date and time");
     return;
   }
 
@@ -28,7 +44,7 @@ add.addEventListener("click", (e) => {
   text.innerText = todoText;
   let time = document.createElement("p");
   time.classList.add("todo-time");
-  time.innerText = todoMonth + " / " + todoDay;
+  time.innerText = todoDate + " " + todoTime;
   todo.appendChild(text);
   todo.appendChild(time);
   todo.setAttribute("done", false);
@@ -49,8 +65,8 @@ add.addEventListener("click", (e) => {
 
   // create an object
   let todoItem = {
-    todoDay: todoDay,
-    todoMonth: todoMonth,
+    todoDate: todoDate,
+    todoTime: todoTime,
     todoText: todoText,
     todoDone: todo.classList.contains("done"),
   };
@@ -116,7 +132,7 @@ function loadData() {
       todoText.innerText = item.todoText;
       let todoTime = document.createElement("p");
       todoTime.classList.add("todo-time");
-      todoTime.innerText = item.todoMonth + " / " + item.todoDay;
+      todoTime.innerText = item.todoDate + " " + item.todoTime;
       todo.appendChild(todoText);
       todo.appendChild(todoTime);
       if (item.todoDone === true) {
@@ -186,17 +202,17 @@ function mergeTime(arr1, arr2) {
   let i = 0;
   let j = 0;
   while (i < arr1.length && j < arr2.length) {
-    if (Number(arr1[i].todoMonth) < Number(arr2[j].todoMonth)) {
+    if (Number(arr1[i].todoDate) < Number(arr2[j].todoDate)) {
       results.push(arr1[i]);
       i++;
-    } else if (Number(arr1[i].todoMonth) > Number(arr2[j].todoMonth)) {
+    } else if (Number(arr1[i].todoDate) > Number(arr2[j].todoDate)) {
       results.push(arr2[j]);
       j++;
-    } else if (Number(arr1[i].todoMonth) == Number(arr2[j].todoMonth)) {
-      if (Number(arr1[i].todoDay) < Number(arr2[j].todoDay)) {
+    } else if (Number(arr1[i].todoDate) == Number(arr2[j].todoDate)) {
+      if (Number(arr1[i].todoTime) < Number(arr2[j].todoTime)) {
         results.push(arr1[i]);
         i++;
-      } else if (Number(arr1[i].todoDay) > Number(arr2[j].todoDay)) {
+      } else if (Number(arr1[i].todoTime) > Number(arr2[j].todoTime)) {
         results.push(arr2[j]);
         j++;
       }
