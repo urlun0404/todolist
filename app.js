@@ -2,14 +2,15 @@ let section = document.querySelector("section");
 let add = document.querySelector("form button");
 
 // Set default date and time of inputs
-document.querySelector("form > input[type='date']").value = new Date()
+document.querySelector("form input[type='date']").value = new Date()
   .toLocaleString("zh-tw", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   })
   .replaceAll("/", "-");
-document.querySelector("form > input[type='time']").value =
+
+document.querySelector("form input[type='time']").value =
   new Date().toLocaleTimeString("en-GB", {
     hour: "numeric",
     minute: "numeric",

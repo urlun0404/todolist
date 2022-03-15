@@ -9,7 +9,6 @@ body {
   min-height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(#051937), color-stop(#004d7a), color-stop(#008793), color-stop(#00bf72), to(#a8eb12));
   background: linear-gradient(180deg, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-  overflow-y: hidden;
 }
 
 h1,
@@ -26,7 +25,7 @@ i {
 }
 
 header {
-  height: 20vh;
+  height: 15vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,7 +38,7 @@ header {
 }
 
 header h1 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   color: white;
 }
 
@@ -50,6 +49,9 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   /* Chrome, Safari, Edge, Opera */
   /* Firefox */
 }
@@ -57,20 +59,39 @@ form {
 form input,
 form button {
   border: 0;
-  padding: 0.5rem 0.75rem;
-  margin: 0 0.25rem;
+  margin: 0 0.5rem;
+  min-height: 2.25em;
+  font-size: 1.05rem;
+  border-radius: 3px;
 }
 
-form input[type="number"] {
-  width: 3rem;
+form input[type="text"] {
+  padding: 0.5rem;
+  width: 30vw;
+}
+
+form .dueDateTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .dueDateTime input[type="date"],
+form .dueDateTime input[type="time"] {
+  padding: 0.25rem 0.5rem;
 }
 
 form button {
-  cursor: pointer;
+  padding: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   background-color: #ffe44b;
-  border-radius: 2%;
+  cursor: pointer;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -107,7 +128,7 @@ div.sort {
 }
 
 div.sort button {
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   font-size: 1rem;
   border: none;
   cursor: pointer;
@@ -130,7 +151,7 @@ section {
   padding: 1.5rem;
   margin: 0 auto;
   min-width: 60vw;
-  width: 60vw;
+  width: 70vw;
   height: 60vh;
   max-height: 60vh;
   overflow-y: auto;
@@ -152,9 +173,9 @@ section::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-section div.todo {
-  min-width: 45vw;
-  width: 45vw;
+section .todo {
+  min-width: 90%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -164,25 +185,25 @@ section div.todo {
   margin: 0.25rem 0;
 }
 
-section div.todo p,
-section div.todo button {
-  padding: 0.5rem 0.75rem;
+section .todo p,
+section .todo button {
+  padding: 0.5rem;
 }
 
-section div.todo p {
+section .todo p {
   text-align: center;
 }
 
-section div.todo p.todo-text {
-  width: 60%;
+section .todo p.todo-text {
+  width: 50%;
   overflow-wrap: break-word;
 }
 
-section div.todo p.todo-time {
-  width: 20%;
+section .todo p.todo-time {
+  width: 30%;
 }
 
-section div.todo div.todo-btn {
+section .todo .todo-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,7 +211,7 @@ section div.todo div.todo-btn {
       flex-wrap: nowrap;
 }
 
-section div.todo div.todo-btn button {
+section .todo .todo-btn button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,11 +234,11 @@ section div.todo div.todo-btn button {
   height: 2.5vw;
 }
 
-section div.todo div.todo-btn button.complete {
+section .todo .todo-btn button.complete {
   background-color: #06b106;
 }
 
-section div.todo div.todo-btn button.trash {
+section .todo .todo-btn button.trash {
   background-color: crimson;
 }
 
@@ -264,6 +285,45 @@ section div.done {
 }
 
 @media screen and (max-width: 850px) {
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+    width: 80vw;
+    margin: 0 auto;
+  }
+  form input {
+    margin: 0;
+  }
+  form input,
+  form .dueDateTime,
+  form button {
+    width: 100%;
+  }
+  form input[type="text"] {
+    min-width: 100%;
+  }
+  form .dueDateTime {
+    gap: 1rem;
+  }
+  form .dueDateTime input {
+    width: 50%;
+  }
+  form button:hover {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  div.sort {
+    margin: 1rem 0;
+  }
   section {
     min-width: 80vw;
     max-height: 50vh;
@@ -291,7 +351,7 @@ section div.done {
   section div.todo p.todo-time {
     width: 80%;
   }
-  section div.todo div.todo-btn {
+  section div.todo .todo-btn {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -309,7 +369,7 @@ section div.done {
             justify-content: center;
     min-width: 80%;
   }
-  section div.todo div.todo-btn button {
+  section div.todo .todo-btn button {
     width: 100%;
     height: 5vw;
     margin: 0.5rem 0;

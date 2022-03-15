@@ -6,7 +6,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Create your todolist!" />
     <meta name="author" content="lun" />
-    <title>Lun's Todo List</title>
+    <title>Todo List</title>
     <!-- cdn js font awesome -->
     <link
       rel="stylesheet"
@@ -19,12 +19,14 @@
   </head>
   <body>
     <header>
-      <h1>My Todo List</h1>
+      <h1>Todo List</h1>
     </header>
     <form action="">
       <input type="text" required placeholder="your todo task" />
-      <input type="date" required />
-      <input type="time" required />
+      <div class="dueDateTime">
+        <input type="date" required />
+        <input type="time" required />
+      </div>
       <button type="submit">Add into list</button>
     </form>
     <div class="sort">
