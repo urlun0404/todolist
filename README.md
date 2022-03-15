@@ -1,14 +1,14 @@
 # To Do List
 
-## A static todo list created by using HTML5, CSS3(SCSS), JavaScript
+A static todo list created by using HTML5, CSS3(SCSS), JavaScript
 
-<img src="/homepage.png" alt="Homepage Image" style="width: 450px;">
+<img src="/homepage.png" alt="Homepage Image" style="width: 500px;">
 
 ## Built With
 
 - HTML
 - [SaSS/SCSS](https://sass-lang.com/ "SaSS official website") - A CSS preprocessor compatible with all versions of CSS on multiple engines
-- Vanilla JavaScript - For adding
+- Vanilla JavaScript - Handling users' interactions with the todo list
 
 ## Features
 
