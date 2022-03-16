@@ -31,7 +31,7 @@ add.addEventListener("click", (e) => {
     alert("Please enter your task");
     return;
   }
-  if (todoDate == "" || todoTime == "") {
+  if (todoDate === "" || todoTime === "") {
     alert("Please enter due date and time");
     return;
   }
@@ -85,7 +85,6 @@ add.addEventListener("click", (e) => {
   completeButton.addEventListener("click", (e) => {
     todo.classList.toggle("done");
     todo.setAttribute("done", todo.classList.contains("done"));
-    console.log(todo);
   });
 
   // remove list-items
@@ -202,20 +201,14 @@ function mergeTime(arr1, arr2) {
   let i = 0;
   let j = 0;
   while (i < arr1.length && j < arr2.length) {
-    if (Number(arr1[i].todoDate) < Number(arr2[j].todoDate)) {
+    let dateTime1 = Number(new Date(arr1[i].todoDate + " " + arr1[i].todoTime));
+    let dateTime2 = Number(new Date(arr2[j].todoDate + " " + arr2[j].todoTime));
+    if (dateTime1 < dateTime2) {
       results.push(arr1[i]);
       i++;
-    } else if (Number(arr1[i].todoDate) > Number(arr2[j].todoDate)) {
+    } else if (dateTime1 > dateTime2) {
       results.push(arr2[j]);
       j++;
-    } else if (Number(arr1[i].todoDate) == Number(arr2[j].todoDate)) {
-      if (Number(arr1[i].todoTime) < Number(arr2[j].todoTime)) {
-        results.push(arr1[i]);
-        i++;
-      } else if (Number(arr1[i].todoTime) > Number(arr2[j].todoTime)) {
-        results.push(arr2[j]);
-        j++;
-      }
     }
   }
   while (i < arr1.length) {
