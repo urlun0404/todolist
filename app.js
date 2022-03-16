@@ -22,7 +22,6 @@ add.addEventListener("click", (e) => {
   e.preventDefault();
 
   // get the input values
-  // console.log(e.target.parentElement);
   let form = e.target.parentElement;
   let todoText = form[0].value;
   let todoDate = form[1].value;
@@ -74,7 +73,7 @@ add.addEventListener("click", (e) => {
 
   // store data into an array of objects
   let list = localStorage.getItem("list");
-  if (list == null) {
+  if (list == null || list == "" || list == "undefined") {
     localStorage.setItem("list", JSON.stringify([todoItem]));
   } else {
     let listAry = JSON.parse(list);
@@ -122,7 +121,7 @@ loadData();
 // load local storage
 function loadData() {
   let list = localStorage.getItem("list");
-  if (list != null) {
+  if (list !== "undefined" && list !== "" && list != null) {
     let listAry = JSON.parse(list);
     listAry.forEach((item) => {
       //create a todo
