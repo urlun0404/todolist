@@ -25,7 +25,6 @@ What follows is this website provides:
 
 ## To Do:
 
-- Valid todo date
 - Button for clearing all todo items of the list
 - Button for editing every todo item
 - Special character handling
