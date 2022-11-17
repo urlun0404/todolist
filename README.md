@@ -7,7 +7,7 @@ A static todo list created by using HTML5, CSS3(SCSS), JavaScript
 ## Built With
 
 - HTML
-- [SaSS/SCSS](https://sass-lang.com/ "SaSS official website") - A CSS preprocessor compatible with all versions of CSS on multiple engines
+- [SaSS/SCSS](https://sass-lang.com/ 'SaSS official website') - A CSS preprocessor compatible with all versions of CSS on multiple engines
 - Vanilla JavaScript - Handling users' interactions with the todo list
 
 ## Features
@@ -32,4 +32,4 @@ What follows is this website provides:
 
 ## Author
 
-[You-Lun, Lin](https://urlun0404.netlify.app/index.html)
+[You-Lun, Lin](https://portfolio-next-jet.vercel.app/)
